@@ -2,4 +2,49 @@ For instance, road construction involves multiple stakeholders, NHAI being respo
 
 Similarly, though the creation of new or upgradation of existing Railway Station is the responsibility of the respective Division of Indian Railways, but the approach road comes under the ambit of the State government. The lack of coordination between the two executing bodies may result in the non-utilisation of newly created public infrastructure. Dynamic mapping of brownfield and greenfield projects on the Gati Shakti GIS Portal, with real-time updation, will provide visibility to implementing agencies to align their priorities properly.
 
-Gati Shakti plan also aims to develop a nationwide network integrating digital systems of various ministries dealing with logistics under one platform known as ULIP (Unified Logistics Interface Platform) for facilitating minimal documentation, real-time information and faster movement of goods.
+Gati Shakti plan also aims to develop a nationwide network integrating digital systems of various ministries dealing with 
+logistics under one platform known as ULIP (Unified Logistics Interface Platform) for facilitating minimal documentation, real-time information and faster movement of goods.
+// C++ program for activity selection problem.
+// The following implementation assumes that the activities
+// are already sorted according to their finish time
+#include <bits/stdc++.h>
+using namespace std;
+ 
+// Prints a maximum set of activities that can be done by a single
+// person, one at a time.
+//  n   -->  Total number of activities
+//  s[] -->  An array that contains start time of all activities
+//  f[] -->  An array that contains finish time of all activities
+void printMaxActivities(int s[], int f[], int n)
+{
+    int i, j;
+ 
+    cout <<"Following activities are selected "<< endl;
+ 
+    // The first activity always gets selected
+    i = 0;
+    cout <<" "<< i;
+ 
+    // Consider rest of the activities
+    for (j = 1; j < n; j++)
+    {
+      // If this activity has start time greater than or
+      // equal to the finish time of previously selected
+      // activity, then select it
+      if (s[j] >= f[i])
+      {
+          cout <<" " << j;
+          i = j;
+      }
+    }
+}
+ 
+// driver program to test above function
+int main()
+{
+    int s[] =  {1, 3, 0, 5, 8, 5};
+    int f[] =  {2, 4, 6, 7, 9, 9};
+    int n = sizeof(s)/sizeof(s[0]);
+    printMaxActivities(s, f, n);
+    return 0;
+}
